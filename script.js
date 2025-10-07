@@ -1,3 +1,5 @@
+const INITIAL_GRID_SIZE = 16;
+
 const grid = document.querySelector('.grid');
 const gridSizeBtn = document.querySelector('.grid-size-btn');
 
@@ -28,20 +30,22 @@ function deleteGrid() {
     grid.replaceChildren();
 }
 
-createGrid(100);
-
 grid.addEventListener('click', () => {
     penDown = !penDown;
 });
 
 grid.addEventListener('mousemove', event => {
-    if (penDown && !event.target.classList.contains('grid')) {
-        console.log(event.target.classList);
+    if (penDown && event.target.classList.contains('cell')) {
         event.target.style.backgroundColor = 'black';
     }
 });
 
 gridSizeBtn.addEventListener('click', () => {
-    deleteGrid();
-    createGrid(prompt());
+    let gridSize = parseInt(prompt('Enter number of rows (1-150):'), 10);
+    if (!isNaN(gridSize) && gridSize > 0 && gridSize <= 150) {
+        deleteGrid();
+        createGrid(gridSize);
+    }
 });
+
+createGrid(INITIAL_GRID_SIZE);
