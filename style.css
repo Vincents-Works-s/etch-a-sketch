@@ -5,13 +5,13 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   height: 100vh;
 }
 
-.grid-size-btn {
-  margin-top: 50px;
-  margin-bottom: 50px;
+.highlight {
+  background-color: yellow;
 }
 
 .grid {
